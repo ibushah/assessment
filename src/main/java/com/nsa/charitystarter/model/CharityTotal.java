@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -20,7 +21,7 @@ public class CharityTotal {
 
 
 
-    private Long totalBeforeGiftAid;
+    private Double totalBeforeGiftAid;
 
     private Double totalGiftAid;
 
@@ -41,7 +42,7 @@ public class CharityTotal {
     public CharityTotal() {
     }
 
-    public CharityTotal(Long totalBeforeGiftAid, Double totalGiftAid, Double totalAfterGifAid, Date lastUpdatedDate, Charity charity) {
+    public CharityTotal(Double totalBeforeGiftAid, Double totalGiftAid, Double totalAfterGifAid, Timestamp lastUpdatedDate, Charity charity) {
         this.totalBeforeGiftAid = totalBeforeGiftAid;
         this.totalGiftAid = totalGiftAid;
         this.totalAfterGifAid = totalAfterGifAid;
@@ -57,11 +58,11 @@ public class CharityTotal {
         this.id = id;
     }
 
-    public Long getTotalBeforeGiftAid() {
+    public Double getTotalBeforeGiftAid() {
         return totalBeforeGiftAid;
     }
 
-    public void setTotalBeforeGiftAid(Long totalBeforeGiftAid) {
+    public void setTotalBeforeGiftAid(Double totalBeforeGiftAid) {
         this.totalBeforeGiftAid = totalBeforeGiftAid;
     }
 
@@ -77,7 +78,7 @@ public class CharityTotal {
         return totalAfterGifAid;
     }
 
-    public void setTotalAfterGifAid(Double totalAfterGifAid) {
+    public void setTotalAfterGiftAid(Double totalAfterGifAid) {
         this.totalAfterGifAid = totalAfterGifAid;
     }
 

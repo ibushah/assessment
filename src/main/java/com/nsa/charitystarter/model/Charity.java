@@ -27,7 +27,10 @@ public class Charity {
     private Boolean isActive;
 
     @OneToMany(mappedBy = "charity")
-    private List<CharityTotal> charityTotal;
+    private List<CharityTotal> charityTotalList;
+
+    @OneToMany(mappedBy = "charity")
+    private List<GiftAidDonation> giftAidDonations;
 
     public Charity() {
     }
@@ -39,7 +42,7 @@ public class Charity {
         this.logoFileName = logoFileName;
         this.acronym = acronym;
         this.isActive = isActive;
-        this.charityTotal = charityTotal;
+        this.charityTotalList = charityTotal;
     }
 
     public Long getId() {
@@ -51,11 +54,11 @@ public class Charity {
     }
 
     public List<CharityTotal> getCharityTotal() {
-        return charityTotal;
+        return charityTotalList;
     }
 
     public void setCharityTotal(List<CharityTotal> charityTotal) {
-        this.charityTotal = charityTotal;
+        this.charityTotalList = charityTotal;
     }
 
     public Long getRegistrationId() {
