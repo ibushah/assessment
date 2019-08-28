@@ -21,7 +21,7 @@ public class Donation {
 
     private Date donationDate;
 
-    private Boolean isOwnMoney;
+    private Boolean ownMoney;
 
     private Boolean hasNoBenefitToDonor;
 
@@ -39,10 +39,10 @@ public class Donation {
     public Donation() {
     }
 
-    public Donation(Double ammountInPence, Date donationDate, Boolean isOwnMoney, Boolean hasNoBenefitToDonor, Boolean wishesToGiftAid, Long donorId, Long sponserFormId, List<GiftAidDonation> giftAidDonationList) {
+    public Donation(Double ammountInPence, Date donationDate, Boolean ownMoney, Boolean hasNoBenefitToDonor, Boolean wishesToGiftAid, Long donorId, Long sponserFormId, List<GiftAidDonation> giftAidDonationList) {
         this.ammountInPence = ammountInPence;
         this.donationDate = donationDate;
-        this.isOwnMoney = isOwnMoney;
+        this.ownMoney = ownMoney;
         this.hasNoBenefitToDonor = hasNoBenefitToDonor;
         this.wishesToGiftAid = wishesToGiftAid;
         this.donorId = donorId;
@@ -83,11 +83,11 @@ public class Donation {
     }
 
     public Boolean getOwnMoney() {
-        return isOwnMoney;
+        return ownMoney;
     }
 
     public void setOwnMoney(Boolean ownMoney) {
-        isOwnMoney = ownMoney;
+        this.ownMoney = ownMoney;
     }
 
     public Boolean getHasNoBenefitToDonor() {

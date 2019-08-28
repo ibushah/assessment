@@ -62,7 +62,7 @@ public class DonationService {
 
             charity1.setId(donationDTO.getCharityId());
             charity1.setLogoFileName(donationDTO.getLogoFileName());
-            charity1.setName(donationDTO.getCharityName());
+            charity1.setName(donationDTO.getCharityName().toLowerCase());
             charity1.setPurpose(donationDTO.getPurpose());
             charity1.setRegistrationId(donationDTO.getRegistrationId());
             Charity charity2=saveCharity(charity1);
@@ -208,4 +208,46 @@ public class DonationService {
 
         return  donation;
     }
+
+
+
+    public List<CharityTotal> getAllCharity(){
+
+        List<CharityTotal> charityList=charityTotalRepository.findAll();
+        return charityList;
+
+    }
+    public Charity getCharityByid(long id){
+        Optional<Charity> charity=charityRepository.findById(id);
+        if(charity.isPresent()){
+            return charity.get();
+        }
+        else
+        {
+            return null;
+        }
+
+    }
+
+
+    public Charity getCharityByName(String name){
+
+        Charity charity=charityRepository.findByName(name.toLowerCase());
+        if(charity!=null)
+        {
+            return charity;
+        }
+        else {
+
+            return null;
+        }
+
+
+
+
+
+    }
+
+
+
 }

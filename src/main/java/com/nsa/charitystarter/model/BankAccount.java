@@ -16,6 +16,13 @@ public class BankAccount {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+   private Long cardNo;
+
+  private  Date cardExpiry;
+
+  private  Long cvcNo;
+
+
 
     private Long charityId;
 
@@ -25,7 +32,10 @@ public class BankAccount {
 
     private Date lastValidDate;
 
-    public BankAccount(Long charityId, Long accountNumber, Long sortCode, Date lastValidDate) {
+    public BankAccount(Long cardNo, Date cardExpiry, Long cvcNo, Long charityId, Long accountNumber, Long sortCode, Date lastValidDate) {
+        this.cardNo = cardNo;
+        this.cardExpiry = cardExpiry;
+        this.cvcNo = cvcNo;
         this.charityId = charityId;
         this.accountNumber = accountNumber;
         this.sortCode = sortCode;
@@ -33,6 +43,30 @@ public class BankAccount {
     }
 
     public BankAccount() {
+    }
+
+    public Long getCardNo() {
+        return cardNo;
+    }
+
+    public void setCardNo(Long cardNo) {
+        this.cardNo = cardNo;
+    }
+
+    public Date getCardExpiry() {
+        return cardExpiry;
+    }
+
+    public void setCardExpiry(Date cardExpiry) {
+        this.cardExpiry = cardExpiry;
+    }
+
+    public Long getCvcNo() {
+        return cvcNo;
+    }
+
+    public void setCvcNo(Long cvcNo) {
+        this.cvcNo = cvcNo;
     }
 
     public Long getId() {
