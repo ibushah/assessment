@@ -1,9 +1,13 @@
 package com.nsa.charitystarter.DonationDTO;
 
+import java.util.Date;
+
 public class DonationDTO {
 
 
     Long id;
+
+
 
     String donorFirstName;
 
@@ -48,9 +52,9 @@ public class DonationDTO {
 
     String street;
 
-
     public DonationDTO(Long id, String donorFirstName, String donorLastName, String donorAddress, String donorCity, String donorPostalCode, String donorCountry, Long buildingNumber, String buildingName, Boolean hasNoBenefitToDonor, Boolean isOwnMoney, Boolean wishesToGiftAid, Double amount, String charityName, String acronym, Boolean isActive, String logoFileName, String purpose, Long registrationId, Long charityId, String country, String street) {
         this.id = id;
+
         this.donorFirstName = donorFirstName;
         this.donorLastName = donorLastName;
         this.donorAddress = donorAddress;
@@ -76,6 +80,7 @@ public class DonationDTO {
 
     public DonationDTO() {
     }
+
 
     public String getCountry() {
         return country;

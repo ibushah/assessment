@@ -30,7 +30,7 @@ public class GiftAidDonation {
 
     private Boolean wishesToGiftAid;
 
-    private Boolean isOwnMoney;
+    private Boolean ownMoney;
 
     @ManyToOne
     @JoinColumn(name = "charity_id", nullable = false)
@@ -59,12 +59,12 @@ public class GiftAidDonation {
     public GiftAidDonation() {
     }
 
-    public GiftAidDonation(Double ammountInPence, Date donationDate, Boolean hasNoBenefitToDonor, Boolean wishesToGiftAid, Boolean isOwnMoney, Charity charity, Donation donation, Donor donor, Long sponserFormId, String paymentReference, Double giftAidAmmount) {
+    public GiftAidDonation(Double ammountInPence, Date donationDate, Boolean hasNoBenefitToDonor, Boolean wishesToGiftAid, Boolean ownMoney, Charity charity, Donation donation, Donor donor, Long sponserFormId, String paymentReference, Double giftAidAmmount) {
         this.ammountInPence = ammountInPence;
         this.donationDate = donationDate;
         this.hasNoBenefitToDonor = hasNoBenefitToDonor;
         this.wishesToGiftAid = wishesToGiftAid;
-        this.isOwnMoney = isOwnMoney;
+        this.ownMoney = ownMoney;
         this.charity = charity;
         this.donation = donation;
         this.donor = donor;
@@ -86,11 +86,11 @@ public class GiftAidDonation {
     }
 
     public Boolean getOwnMoney() {
-        return isOwnMoney;
+        return ownMoney;
     }
 
     public void setOwnMoney(Boolean ownMoney) {
-        isOwnMoney = ownMoney;
+        this.ownMoney = ownMoney;
     }
 
     public void setDonation(Donation donation) {
