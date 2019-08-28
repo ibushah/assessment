@@ -1,6 +1,8 @@
 package com.nsa.charitystarter.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,9 +20,9 @@ public class GiftAidDonation {
     Long id;
 
 
-    private Long donationId;
 
-    private Long ammountInPence;
+
+    private Double ammountInPence;
 
     private Date donationDate;
 
@@ -28,11 +30,27 @@ public class GiftAidDonation {
 
     private Boolean wishesToGiftAid;
 
-    private Long donorId;
+    private Boolean isOwnMoney;
+
+    @ManyToOne
+    @JoinColumn(name = "charity_id", nullable = false)
+    @JsonBackReference
+    private Charity charity;
+
+
+    @ManyToOne
+    @JoinColumn(name = "donation_id", nullable = false)
+    @JsonBackReference
+    private Donation donation;
+
+    @ManyToOne
+    @JoinColumn(name = "donor_id", nullable = false)
+    @JsonBackReference
+    private Donor donor;
 
     private Long sponserFormId;
 
-    private Long charityId;
+
 
     private String paymentReference;
 
@@ -41,19 +59,51 @@ public class GiftAidDonation {
     public GiftAidDonation() {
     }
 
-    public GiftAidDonation(Long donationId, Long ammountInPence, Date donationDate, Boolean hasNoBenefitToDonor, Boolean wishesToGiftAid, Long donorId, Long sponserFormId, Long charityId, String paymentReference, Double giftAidAmmount) {
-        this.donationId = donationId;
+    public GiftAidDonation(Double ammountInPence, Date donationDate, Boolean hasNoBenefitToDonor, Boolean wishesToGiftAid, Boolean isOwnMoney, Charity charity, Donation donation, Donor donor, Long sponserFormId, String paymentReference, Double giftAidAmmount) {
         this.ammountInPence = ammountInPence;
         this.donationDate = donationDate;
         this.hasNoBenefitToDonor = hasNoBenefitToDonor;
         this.wishesToGiftAid = wishesToGiftAid;
-        this.donorId = donorId;
+        this.isOwnMoney = isOwnMoney;
+        this.charity = charity;
+        this.donation = donation;
+        this.donor = donor;
         this.sponserFormId = sponserFormId;
-        this.charityId = charityId;
         this.paymentReference = paymentReference;
         this.giftAidAmmount = giftAidAmmount;
     }
 
+    public Charity getCharity() {
+        return charity;
+    }
+
+    public void setCharity(Charity charity) {
+        this.charity = charity;
+    }
+
+    public Donation getDonation() {
+        return donation;
+    }
+
+    public Boolean getOwnMoney() {
+        return isOwnMoney;
+    }
+
+    public void setOwnMoney(Boolean ownMoney) {
+        isOwnMoney = ownMoney;
+    }
+
+    public void setDonation(Donation donation) {
+        this.donation = donation;
+    }
+
+    public Donor getDonor() {
+        return donor;
+    }
+
+    public void setDonor(Donor donor) {
+        this.donor = donor;
+    }
 
     public Long getId() {
         return id;
@@ -63,19 +113,13 @@ public class GiftAidDonation {
         this.id = id;
     }
 
-    public Long getDonationId() {
-        return donationId;
-    }
 
-    public void setDonationId(Long donationId) {
-        this.donationId = donationId;
-    }
 
-    public Long getAmmountInPence() {
+    public Double getAmmountInPence() {
         return ammountInPence;
     }
 
-    public void setAmmountInPence(Long ammountInPence) {
+    public void setAmmountInPence(Double ammountInPence) {
         this.ammountInPence = ammountInPence;
     }
 
@@ -103,12 +147,12 @@ public class GiftAidDonation {
         this.wishesToGiftAid = wishesToGiftAid;
     }
 
-    public Long getDonorId() {
-        return donorId;
+    public Charity getDonorId() {
+        return charity;
     }
 
-    public void setDonorId(Long donorId) {
-        this.donorId = donorId;
+    public void setDonorId(Charity charity) {
+        this.charity = charity;
     }
 
     public Long getSponserFormId() {
@@ -119,13 +163,6 @@ public class GiftAidDonation {
         this.sponserFormId = sponserFormId;
     }
 
-    public Long getCharityId() {
-        return charityId;
-    }
-
-    public void setCharityId(Long charityId) {
-        this.charityId = charityId;
-    }
 
     public String getPaymentReference() {
         return paymentReference;

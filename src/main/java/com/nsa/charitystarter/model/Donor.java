@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Donor {
@@ -19,10 +20,14 @@ public class Donor {
 
     Long addressId;
 
-    public Donor(String firstName, String lastName, Long addressId) {
+    @OneToMany(mappedBy = "donor")
+    List<GiftAidDonation> giftAidDonationList;
+
+    public Donor(String firstName, String lastName, Long addressId, List<GiftAidDonation> giftAidDonationList) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.addressId = addressId;
+        this.giftAidDonationList = giftAidDonationList;
     }
 
     public Donor() {
@@ -34,6 +39,14 @@ public class Donor {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public List<GiftAidDonation> getGiftAidDonationList() {
+        return giftAidDonationList;
+    }
+
+    public void setGiftAidDonationList(List<GiftAidDonation> giftAidDonationList) {
+        this.giftAidDonationList = giftAidDonationList;
     }
 
     public String getFirstName() {

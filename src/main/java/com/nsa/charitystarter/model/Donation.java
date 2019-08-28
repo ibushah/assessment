@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Donation {
@@ -16,7 +17,7 @@ public class Donation {
     private Long id;
 
 
-    private Long ammountInPence;
+    private Double ammountInPence;
 
     private Date donationDate;
 
@@ -30,10 +31,15 @@ public class Donation {
 
     private Long sponserFormId;
 
+    @OneToMany(mappedBy = "donor")
+    List<GiftAidDonation> giftAidDonationList;
+
+
+
     public Donation() {
     }
 
-    public Donation(Long ammountInPence, Date donationDate, Boolean isOwnMoney, Boolean hasNoBenefitToDonor, Boolean wishesToGiftAid, Long donorId, Long sponserFormId) {
+    public Donation(Double ammountInPence, Date donationDate, Boolean isOwnMoney, Boolean hasNoBenefitToDonor, Boolean wishesToGiftAid, Long donorId, Long sponserFormId, List<GiftAidDonation> giftAidDonationList) {
         this.ammountInPence = ammountInPence;
         this.donationDate = donationDate;
         this.isOwnMoney = isOwnMoney;
@@ -41,8 +47,16 @@ public class Donation {
         this.wishesToGiftAid = wishesToGiftAid;
         this.donorId = donorId;
         this.sponserFormId = sponserFormId;
+        this.giftAidDonationList = giftAidDonationList;
     }
 
+    public List<GiftAidDonation> getGiftAidDonationList() {
+        return giftAidDonationList;
+    }
+
+    public void setGiftAidDonationList(List<GiftAidDonation> giftAidDonationList) {
+        this.giftAidDonationList = giftAidDonationList;
+    }
 
     public Long getId() {
         return id;
@@ -52,11 +66,11 @@ public class Donation {
         this.id = id;
     }
 
-    public Long getAmmountInPence() {
+    public Double getAmmountInPence() {
         return ammountInPence;
     }
 
-    public void setAmmountInPence(Long ammountInPence) {
+    public void setAmmountInPence(Double ammountInPence) {
         this.ammountInPence = ammountInPence;
     }
 

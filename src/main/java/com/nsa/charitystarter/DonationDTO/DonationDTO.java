@@ -17,13 +17,18 @@ public class DonationDTO {
 
     String donorCountry;
 
+    Long buildingNumber;
+
+
+    String buildingName;
+
     Boolean hasNoBenefitToDonor;
 
     Boolean isOwnMoney;
 
     Boolean wishesToGiftAid;
 
-    Long amount;
+    Double amount;
 
     String charityName;
 
@@ -39,8 +44,12 @@ public class DonationDTO {
 
     Long charityId;
 
+    String country;
 
-    public DonationDTO(Long id, String donorFirstName, String donorLastName, String donorAddress, String donorCity, String donorPostalCode, String donorCountry, Boolean hasNoBenefitToDonor, Boolean isOwnMoney, Boolean wishesToGiftAid, Long amount, String charityName, String acronym, Boolean isActive, String logoFileName, String purpose, Long registrationId, Long charityId) {
+    String street;
+
+
+    public DonationDTO(Long id, String donorFirstName, String donorLastName, String donorAddress, String donorCity, String donorPostalCode, String donorCountry, Long buildingNumber, String buildingName, Boolean hasNoBenefitToDonor, Boolean isOwnMoney, Boolean wishesToGiftAid, Double amount, String charityName, String acronym, Boolean isActive, String logoFileName, String purpose, Long registrationId, Long charityId, String country, String street) {
         this.id = id;
         this.donorFirstName = donorFirstName;
         this.donorLastName = donorLastName;
@@ -48,6 +57,8 @@ public class DonationDTO {
         this.donorCity = donorCity;
         this.donorPostalCode = donorPostalCode;
         this.donorCountry = donorCountry;
+        this.buildingNumber = buildingNumber;
+        this.buildingName = buildingName;
         this.hasNoBenefitToDonor = hasNoBenefitToDonor;
         this.isOwnMoney = isOwnMoney;
         this.wishesToGiftAid = wishesToGiftAid;
@@ -59,9 +70,43 @@ public class DonationDTO {
         this.purpose = purpose;
         this.registrationId = registrationId;
         this.charityId = charityId;
+        this.country = country;
+        this.street = street;
     }
 
     public DonationDTO() {
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public Long getBuildingNumber() {
+        return buildingNumber;
+    }
+
+    public void setBuildingNumber(Long buildingNumber) {
+        this.buildingNumber = buildingNumber;
+    }
+
+    public String getBuildingName() {
+        return buildingName;
+    }
+
+    public void setBuildingName(String buildingName) {
+        this.buildingName = buildingName;
     }
 
     public Long getId() {
@@ -192,11 +237,11 @@ public class DonationDTO {
         this.wishesToGiftAid = wishesToGiftAid;
     }
 
-    public Long getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(Long amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 

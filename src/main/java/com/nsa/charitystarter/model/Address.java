@@ -28,7 +28,9 @@ public class Address {
 
     String CountryIsoCode;
 
-    public Address( String buildingName, Long buildingNumber, String street, String district, String city, String postalCode, String countryIsoCode) {
+    String country;
+
+    public Address(String buildingName, Long buildingNumber, String street, String district, String city, String postalCode, String countryIsoCode, String country) {
         this.buildingName = buildingName;
         this.buildingNumber = buildingNumber;
         this.street = street;
@@ -36,9 +38,18 @@ public class Address {
         this.city = city;
         this.postalCode = postalCode;
         CountryIsoCode = countryIsoCode;
+        this.country = country;
     }
 
     public Address() {
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public Long getId() {
