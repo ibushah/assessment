@@ -1,6 +1,8 @@
 package com.nsa.charitystarter.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,22 +18,35 @@ public class CharityTotal {
     private Long id;
 
 
-    private Long charityId;
+
 
     private Long totalBeforeGiftAid;
 
-    private Long totalGiftAid;
+    private Double totalGiftAid;
+
+    private Double totalAfterGifAid;
+
+
+
 
     private Date lastUpdatedDate;
 
-    public CharityTotal(Long charityId, Long totalBeforeGiftAid, Long totalGiftAid, Date lastUpdatedDate) {
-        this.charityId = charityId;
-        this.totalBeforeGiftAid = totalBeforeGiftAid;
-        this.totalGiftAid = totalGiftAid;
-        this.lastUpdatedDate = lastUpdatedDate;
-    }
+    @ManyToOne
+    @JoinColumn(name = "charity_id", nullable = false)
+    @JsonBackReference
+    private Charity charity;
+
+
 
     public CharityTotal() {
+    }
+
+    public CharityTotal(Long totalBeforeGiftAid, Double totalGiftAid, Double totalAfterGifAid, Date lastUpdatedDate, Charity charity) {
+        this.totalBeforeGiftAid = totalBeforeGiftAid;
+        this.totalGiftAid = totalGiftAid;
+        this.totalAfterGifAid = totalAfterGifAid;
+        this.lastUpdatedDate = lastUpdatedDate;
+        this.charity = charity;
     }
 
     public Long getId() {
@@ -42,14 +57,6 @@ public class CharityTotal {
         this.id = id;
     }
 
-    public Long getCharityId() {
-        return charityId;
-    }
-
-    public void setCharityId(Long charityId) {
-        this.charityId = charityId;
-    }
-
     public Long getTotalBeforeGiftAid() {
         return totalBeforeGiftAid;
     }
@@ -58,12 +65,20 @@ public class CharityTotal {
         this.totalBeforeGiftAid = totalBeforeGiftAid;
     }
 
-    public Long getTotalGiftAid() {
+    public Double getTotalGiftAid() {
         return totalGiftAid;
     }
 
-    public void setTotalGiftAid(Long totalGiftAid) {
+    public void setTotalGiftAid(Double totalGiftAid) {
         this.totalGiftAid = totalGiftAid;
+    }
+
+    public Double getTotalAfterGifAid() {
+        return totalAfterGifAid;
+    }
+
+    public void setTotalAfterGifAid(Double totalAfterGifAid) {
+        this.totalAfterGifAid = totalAfterGifAid;
     }
 
     public Date getLastUpdatedDate() {
@@ -72,5 +87,13 @@ public class CharityTotal {
 
     public void setLastUpdatedDate(Date lastUpdatedDate) {
         this.lastUpdatedDate = lastUpdatedDate;
+    }
+
+    public Charity getCharity() {
+        return charity;
+    }
+
+    public void setCharity(Charity charity) {
+        this.charity = charity;
     }
 }

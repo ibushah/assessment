@@ -1,8 +1,8 @@
 package com.nsa.charitystarter.controllers;
 
 
+import com.nsa.charitystarter.DonationDTO.DonationDTO;
 import com.nsa.charitystarter.Service.DonationService;
-import com.nsa.charitystarter.model.Donation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +17,7 @@ public class DonationController {
     @Autowired
     DonationService donationService;
 
-    @PostMapping
-    public ResponseEntity<String> postDonation(@RequestBody Donation donation)
-    {return donationService.postDonation((donation));}
+    @PostMapping("/donation")
+    public ResponseEntity<String> postDonation(@RequestBody DonationDTO donationDTO)
+    {return donationService.postDonation((donationDTO));}
 }
