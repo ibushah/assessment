@@ -5,12 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Charity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 
@@ -26,16 +26,20 @@ public class Charity {
 
     private Boolean isActive;
 
+    @OneToMany(mappedBy = "charity")
+    private List<CharityTotal> charityTotal;
+
     public Charity() {
     }
 
-    public Charity(Long registrationId, String name, String purpose, String logoFileName, String acronym, Boolean isActive) {
+    public Charity(Long registrationId, String name, String purpose, String logoFileName, String acronym, Boolean isActive, List<CharityTotal> charityTotal) {
         this.registrationId = registrationId;
         this.name = name;
         this.purpose = purpose;
         this.logoFileName = logoFileName;
         this.acronym = acronym;
         this.isActive = isActive;
+        this.charityTotal = charityTotal;
     }
 
     public Long getId() {
@@ -44,6 +48,14 @@ public class Charity {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public List<CharityTotal> getCharityTotal() {
+        return charityTotal;
+    }
+
+    public void setCharityTotal(List<CharityTotal> charityTotal) {
+        this.charityTotal = charityTotal;
     }
 
     public Long getRegistrationId() {
